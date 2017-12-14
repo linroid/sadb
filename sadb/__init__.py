@@ -53,7 +53,7 @@ def select_devices(devices):
     selected = input("\nselect: ")
     if selected == '0':
         nums = range(0, device_count)
-    if selected == 'q':
+    elif selected == 'q':
         print("Exit this operation")
         exit(-1)
     else:
