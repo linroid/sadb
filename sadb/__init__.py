@@ -49,9 +49,13 @@ def select_devices(devices):
     print("0) All devices")
     for i, d in enumerate(devices, start=1):
         print("%d) %s\t%s" % (i, d['serial'], d['model']))
+    print("q) Exit this operation")
     selected = input("\nselect: ")
     if selected == '0':
         nums = range(0, device_count)
+    if selected == 'q':
+        print("Exit this operation")
+        exit(-1)
     else:
         nums = []
         for i in re.split(r'[\s+,]', selected):
@@ -82,9 +86,14 @@ def read_devices():
             break
         if re.match(r'^[0-9a-zA-Z_]+\s+device', line):
             d = re.split(r'\s+', line)
+            # print("serial: %s, model: %s, transport_id: %s\n" % (d[0],d[4],d[6]))
             devices.append({
                 'serial': d[0],
-                'model': d[-2]
+                'usb': d[2],
+                'product': d[3],
+                'model': d[4],
+                'device': d[5],
+                'transport_id': d[6]
             })
     return devices, outputs
 
