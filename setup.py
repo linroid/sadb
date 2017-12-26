@@ -5,7 +5,7 @@ from setuptools import setup
 
 setup(
     name='sadb',
-    version='0.0.4',
+    version='0.0.5',
     author='linroid',
     author_email='linroid@gmail.com',
     url='https://linroid.com',
