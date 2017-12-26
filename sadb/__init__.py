@@ -7,6 +7,7 @@ import re
 import subprocess
 import sys
 from distutils.spawn import find_executable
+from pprint import pprint
 
 adb_path = find_executable("adb")
 
@@ -80,21 +81,21 @@ def read_devices():
     outputs = []
     proc = subprocess.Popen([adb_path, 'devices', '-l'], stdout=subprocess.PIPE)
     while True:
-        line = proc.stdout.readline().decode('utf-8')
+        line = proc.stdout.readline().decode('utf-8').strip()
         outputs.append(line)
         if not line:
             break
-        if re.match(r'^[0-9a-zA-Z_]+\s+device', line):
-            d = re.split(r'\s+', line)
+        if line.strip() and not line.startswith('List of devices'):
+            d = re.split(r'\s+', line.strip())
             # print("serial: %s, model: %s, transport_id: %s\n" % (d[0],d[4],d[6]))
             devices.append({
                 'serial': d[0],
                 'usb': d[2],
                 'product': d[3],
                 'model': d[4],
-                'device': d[5],
-                'transport_id': d[6]
+                'device': d[5]
             })
+
     return devices, outputs
 
 
@@ -102,7 +103,7 @@ def exec_adb_cmd_on_device(device, args):
     """ 执行 adb 命令 """
     cmd = [adb_path, "-s", device['serial']]
     cmd += args
-    print('\n[{model}]exec: {cmd}'.format(cmd=' '.join(cmd), model=device['model']))
+    print('\n[{model}]exec: adb -s {serial} {cmd}'.format(cmd=' '.join(args), serial=device['serial'], model=device['model']))
     subprocess.call(cmd)
 
 
