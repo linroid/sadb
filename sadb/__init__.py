@@ -104,7 +104,10 @@ def exec_adb_cmd_on_device(device, args):
     cmd = [adb_path, "-s", device['serial']]
     cmd += args
     print('\n[{model}]exec: adb -s {serial} {cmd}'.format(cmd=' '.join(args), serial=device['serial'], model=device['model']))
-    subprocess.call(cmd)
+    try:
+       subprocess.call(cmd)
+    except KeyboardInterrupt as e:
+        print('\nCancel the operation!')
 
 
 def dd(obj):
