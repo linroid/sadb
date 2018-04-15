@@ -52,6 +52,7 @@ def select_devices(devices):
         print("%d) %s\t%s" % (i, d['serial'], d['model']))
     print("q) Exit this operation")
     selected = input("\nselect: ")
+    nums = None
     if selected == '0':
         nums = range(0, device_count)
     elif selected == 'q':
@@ -93,7 +94,7 @@ def read_devices():
                 'usb': d[2],
                 'product': d[3],
                 'model': d[4],
-                'device': d[5]
+                # 'device': d[5]
             })
 
     return devices, outputs
