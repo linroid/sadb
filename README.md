@@ -1,41 +1,39 @@
 # sadb
-(safe adb)在多设备时更方便地操作adb，支持批量操作。
+(safe adb)Easy your adb operation when connected multiple devices
 
 [![PyPI version](https://badge.fury.io/py/sadb.svg)](https://badge.fury.io/py/sadb)
 
-如果你的电脑连了多台设备，又需要直接使用adb命令时，会非常痛苦（特别是输完长长的命令后，还得回头 `adb devices` 后编辑命令重新执行）。
-`sadb` 很好地解决了这个问题，不再需要你手动加 -s 参数，甚至可以一条命令对多台设备进行操作：
+It's painful to use adb commands if your compulter has connected multiple devices, especially you type a very long command and adb error your there has multiple devices and you need to try it again with the device's identity argument.
+
+`sadb` was created by solving this problem, no `-s` argument need anymore, you can also use one command to operate multiple devices in batch:
 ![](https://raw.githubusercontent.com/linroid/sadb/master/screenshots.png)
 
-### 使用
-你完全可以把 `sadb` 当成 `adb` 来使用，如果检测到有多设备时，`sadb`会自动让你选择需要操作的设备。
-你也可以设置别名，来让 `sadb` 替代`adb`:
-
-```bash
-alias adb="sadb"
-```
-
-### 安装
+### Install
 ---
 
-`sadb` 已经上传到了 [PYPI](https://pypi.python.org/pypi/sadb)，所以最简单的安装方式就是使用 pip：
+`sadb` has already uploaded to [PYPI](https://pypi.python.org/pypi/sadb)，so the simplest way is to install by pip：
 
 ```
 $ pip install sadb
 ```
 
-更新：
-
-```
-$ pip install sadb --upgrade
-```
-
-当然，你也可以通过源码安装：
+Also，you can install from source code：
 
 ```
 $ git clone git@github.com:linroid/sadb.git
 $ cd sadb
 $ python setup.py install
+```
+
+### Usage
+
+Use `sadb` as same as the orignal `adb` command, it will let you choose target devices when needed.
+
+
+### Upgrade：
+
+```
+$ pip install sadb --upgrade
 ```
 
 
