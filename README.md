@@ -3,7 +3,7 @@
 
 [![PyPI version](https://badge.fury.io/py/sadb.svg)](https://badge.fury.io/py/sadb)
 
-It's painful to use adb commands if your compulter has connected multiple devices, especially you type a very long command and adb error your there has multiple devices and you need to try it again with the device's identity argument.
+It's painful to use adb commands if your computer has connected multiple devices, especially you type a very long command and adb shows error that there has multiple devices and you need to try it again with the device's identity argument.
 
 `sadb` was created by solving this problem, no `-s` argument need anymore, you can also use one command to operate multiple devices in batch:
 ![](https://raw.githubusercontent.com/linroid/sadb/master/screenshots.png)
